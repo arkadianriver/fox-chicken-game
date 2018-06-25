@@ -79,7 +79,7 @@ sub gameOver
 {
   my ($msg) = @_;
   print $msg ."\n";
-  print "*** Game Over ***";
+  print "*** Game Over ***\n";
   exit;
 }
 
@@ -105,7 +105,8 @@ sub listThings
 # redraws the river in a certain way based on which side each varmint is on.
 sub writePretty
 {
-  system("cls");
+  system $^O eq 'Win32' ? 'cls' : 'clear';
+
   print <<EOR;
     Fox and Chicken Game
     --------------------
