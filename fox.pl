@@ -53,17 +53,16 @@ while (1) {
 
   # the main logic of the game, making use of !xor
   # ie. 1^1=false and 0^0=false, so the ! of that means "yes, they're on the same side."
+  # The xor logic only matters if you're on the opposite side of the potential carnage,
+  # and either one involves chicken, so first use that critter to test.
+  if ($a{you} != $a{chicken}) {
 
-  # if fox and chicken are on same side and you're not on the same side
-  # (as either, but we'll use chicken for consistency), fox eats chicken.
-  if ( !($a{fox} ^ $a{chicken}) && $a{you} != $a{chicken} ) {
-    gameOver("You lose. Chicken salad sandwich.");
-  }
+    # if fox and chicken are on same side, fox eats chicken.
+    if (!($a{fox} ^ $a{chicken})) { gameOver("You lose. Chicken salad sandwich."); }
 
-  # if chicken and corn are on same side and you're not on the same side
-  # (as either, but we'll use chicken for consistency), chicken eats corn.
-  if ( !($a{chicken} ^ $a{corn}) && $a{you} != $a{chicken} ) {
-    gameOver("You lose. Corn on the cob.");
+    # if chicken and corn are on same side, chicken eats corn.
+    if (!($a{chicken} ^ $a{corn})) { gameOver("You lose. Corn on the cob."); }
+
   }
 
   $msg = "";
