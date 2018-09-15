@@ -110,7 +110,7 @@ sub listThings
 # redraws the river in a certain way based on which side each varmint is on.
 sub writePretty
 {
-  system $^O =~ /^WinXP|(MS)?Win32$/ ? 'cls' : 'clear';
+  system $^O eq 'MSWin32' ? 'cls' : 'clear';
 
   print <<EOR;
     Fox and Chicken Game
